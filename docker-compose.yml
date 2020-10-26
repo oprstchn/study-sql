@@ -1,0 +1,19 @@
+version: '3'
+services:
+  study_sql:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: study_sql_db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    volumes:
+      - study_sql_db:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
+volumes:
+  study_sql_db:
+    driver: local
